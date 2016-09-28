@@ -1,0 +1,6 @@
+*
+!.gitignore
+
+!plugins/
+!themes/
+!redmine-*.tar.xz

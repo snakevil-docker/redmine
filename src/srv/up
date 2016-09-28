@@ -1,0 +1,19 @@
+#!/bin/sh -e
+
+[ 0 -lt $# ] || {
+  for ii in /srv/up.d/0?-redmine.*; do
+    sh -e "$ii" 3>> /var/lib/redmine/docker.log
+    RCD=$?
+    [ 0 -eq $RCD ] || exit $RCD
+  done
+  for ii in /srv/up.d/1?-gitolite.*; do
+    sh -e "$ii" 3>> /var/git/docker.log
+    RCD=$?
+    [ 0 -eq $RCD ] || exit $RCD
+  done
+  set -- /usr/bin/supervisord
+}
+
+exec "$@"
+
+# vi:sw=2
