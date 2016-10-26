@@ -1,0 +1,8 @@
+#!/bin/sh -e
+
+sed -i -e "/GIT_CONFIG_KEYS/s/''/'.*'/" \
+    -e '/"$ENV{HOME}\/local"/s/^.*/          LOCAL_CODE                =>  "$ENV{HOME}"/' \
+    /mnt/git/.gitolite.rc
+
+cp -f /root/.ssh/id_rsa* /srv/redmine/.ssh/
+chown redmine:nobody /srv/redmine/.ssh/id_rsa*

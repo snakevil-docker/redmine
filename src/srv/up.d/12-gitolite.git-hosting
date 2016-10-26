@@ -1,7 +1,0 @@
-#!/bin/sh -e
-
-sed -i -e "/GIT_CONFIG_KEYS/s/'',/'.*',/" \
-  -e '/"$ENV{HOME}\/local"/s/# L/  L/' \
-  /var/git/.gitolite.rc
-
-# vi:ft=sh:sw=2

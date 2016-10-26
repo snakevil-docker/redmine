@@ -1,5 +1,5 @@
 *
 !.gitignore
 
-!etc/
-!srv/
+!run
+!finish

@@ -1,0 +1,23 @@
+#!/bin/sh -e
+
+cd /srv/redmine
+
+[ -f "config/initializers/secret_token.rb" ] \
+ || su - redmine -c "bundle exec rake generate_secret_token"
+
+cd /mnt/redmine
+
+[ ! -f "configuration.yml" ] \
+ || cp -pf configuration.yml /srv/redmine/config/
+
+[ -f ".migrated" ] || {
+    touch .migrated
+    su - redmine -c "RAILS_ENV=production bundle exec rake db:migrate"
+    su - redmine -c "RAILS_ENV=production REDMINE_LANG=en bundle exec rake redmine:load_default_data"
+    su - redmine -c "RAILS_ENV=production bundle exec rake redmine:plugins:migrate"
+}
+
+cd /mnt/log
+
+touch thin.log
+chown redmine:nobody thin.log

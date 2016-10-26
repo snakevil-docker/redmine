@@ -1,0 +1,6 @@
+production:
+  adapter: mysql2
+  host: mysql
+  database: redmine
+  username: redmine
+  password: enimder
