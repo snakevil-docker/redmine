@@ -2,4 +2,4 @@
 
 echo "[services.d] starting service: thin"
 
-su - redmine -c "/usr/bin/thin start -C config/thin.yml" > /dev/null 2>&1
+su - redmine -c "/usr/bin/thin start -C config/thin.yml >> /mnt/log/thin.log 2>&1"
