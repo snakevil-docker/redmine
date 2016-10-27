@@ -3,7 +3,7 @@ snakevil/redmine
 
 基于 [snakevil/gitolite][gitolite] 构建地 [redmine][] 自用版本。如有需要，请自行定制。
 
-[gitolite]: https://github.com/snakevil-base/gitolite
+[gitolite]: https://github.com/snakevil-docker/gitolite
 [redmine]: http://www.redmine.org
 
 集成插件
@@ -54,6 +54,10 @@ EXPOSE
 
 [thin]: http://code.macournoyer.com/thin/
 
+* 22
+
+    实现自 [snakevil/gitolite](https://github.com/snakevil-docker/gitolite#expose)。
+
 VOLUME
 ---
 
@@ -72,6 +76,14 @@ VOLUME
     * `thin.log`
 
         [thin][] 运行日志。
+
+* `/mnt/_`
+
+    实现自 [snakevil/base](https://github.com/snakevil-docker/base#volume)。
+
+* `/mnt/git`
+
+    实现自 [snakevil/gitolite](https://github.com/snakevil-docker/gitolite#volume)。
 
 LINK
 ---
@@ -102,9 +114,9 @@ LINK
 导入资源
 ---
 
-* `/mnt/redmine/configuration.yaml`
+* `/mnt/_/configuration.yaml`
 
-    [Redmine][redmine] 配置文件。
+    *可选。* [Redmine][redmine] 配置文件。
 
     详情请参考 [Redmine 官方安装手册配置章节](http://www.redmine.org/projects/redmine/wiki/RedmineInstall#Configuration)。
 

@@ -9,13 +9,16 @@ chown redmine:nobody *
 
 cd /srv/redmine
 
+[ ! -f "/mnt/_/configuration.yml" ] || {
+    cp -f /mnt/_/configuration.yml config/
+    chown redmine:nobody config/configuration.yml
+    chmod 0644 config/configuration.yml
+}
+
 [ -f "config/initializers/secret_token.rb" ] \
  || su - redmine -c "bundle exec rake generate_secret_token >> $LOG 2>&1"
 
 cd /mnt/redmine
-
-[ ! -f "configuration.yml" ] \
- || cp -pf configuration.yml /srv/redmine/config/
 
 [ -f ".migrated" ] || {
     touch .migrated

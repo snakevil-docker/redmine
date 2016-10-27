@@ -4,6 +4,10 @@ sed -i -e "/GIT_CONFIG_KEYS/s/''/'.*'/" \
     -e '/# LOCAL_CODE                =>  "$ENV{HOME}\/local"/s/#/ /' \
     /mnt/git/.gitolite.rc
 
-cp -f /root/.ssh/id_rsa /srv/redmine/plugins/redmine_git_hosting/ssh_keys/redmine_gitolite_admin_id_rsa
-cp -f /root/.ssh/id_rsa.pub /srv/redmine/plugins/redmine_git_hosting/ssh_keys/redmine_gitolite_admin_id_rsa.pub
-chown redmine:nobody /srv/redmine/plugins/redmine_git_hosting/ssh_keys/*
+cd /srv/redmine/plugins/redmine_git_hosting/ssh_keys
+
+cp -f /root/.ssh/id_rsa redmine_gitolite_admin_id_rsa
+cp -f /root/.ssh/id_rsa.pub redmine_gitolite_admin_id_rsa.pub
+chown redmine:nobody redmine_gitolite_admin_id_rsa*
+chmod 0600 redmine_gitolite_admin_id_rsa
+chmod 0644 redmine_gitolite_admin_id_rsa.pub
