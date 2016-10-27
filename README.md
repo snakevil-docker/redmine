@@ -121,3 +121,14 @@ LINK
     详情请参考 [Redmine 官方安装手册配置章节](http://www.redmine.org/projects/redmine/wiki/RedmineInstall#Configuration)。
 
     **警告：**请勿修改 `attachments_storage_path` 项，以免附件文件丢失。
+
+* `/mnt/_/id_rsa` 和 `/mnt/_/id_rsa.pub`
+
+    实现自 [snakevil/gitolite](https://github.com/snakevil-docker/gitolite#导入资源)。
+
+导出资源
+---
+
+* `/mnt/_/id_rsa` 和 `/mnt/_/id_rsa.pub`
+
+    实现自 [snakevil/gitolite](https://github.com/snakevil-docker/gitolite#导出资源)。
