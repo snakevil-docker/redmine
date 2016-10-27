@@ -5,3 +5,4 @@
 !config/
 !.ssh/
 !Gemfile.local
+!plugins/
